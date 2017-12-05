@@ -1,10 +1,10 @@
-package sample;
+package metier;
 
 import api.OpenWeatherMap;
 import api.TimeZoneDB;
 import api.Unsplash;
 
-import static sample.StringChecker.IsNullOrWhiteSpace;
+import static metier.StringChecker.IsNullOrWhiteSpace;
 
 public class City{
 

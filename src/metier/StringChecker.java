@@ -1,4 +1,4 @@
-package sample;
+package metier;
 
 public class StringChecker {
 
