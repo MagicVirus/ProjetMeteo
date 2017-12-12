@@ -1,6 +1,6 @@
-package metier;
+package util;
 
-public class StringChecker {
+public abstract class StringChecker {
 
     public static boolean IsNullOrEmpty(String value) {
         if (value != null)
@@ -13,9 +13,10 @@ public class StringChecker {
         int index;
         if (value == null)
             return true;
+        if(IsNullOrEmpty(value))
+            return true;
         if (!isWhiteSpace(value))
             return false;
-
         return true;
     }
 

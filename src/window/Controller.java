@@ -1,4 +1,4 @@
-package metier;
+package window;
 
 import javafx.application.Platform;
 import javafx.beans.property.*;
@@ -11,6 +11,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
+import city.City;
 
 public class Controller extends Parent {
 
@@ -25,9 +26,6 @@ public class Controller extends Parent {
 
     @FXML
     private TextField cityTextField;
-
-    @FXML
-    private Label cityName;
 
     @FXML
     private Label time;
@@ -55,14 +53,14 @@ public class Controller extends Parent {
     private ObjectProperty<Image> weatherIconProperty = new SimpleObjectProperty<>();
     private StringProperty borderPaneProperty  = new SimpleStringProperty();
 
-
     @FXML
     private void handleButtonSearchAction(ActionEvent event){
         try {
             cityList.add(new City(cityTextField.getText()));
             cityTextField.setText(null);
         }
-        catch (Exception e){
+        catch (Exception e) {
+            e.printStackTrace();
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle(ALERT_TITLE);
             alert.setHeaderText(ALERT_DIALOG);
@@ -105,7 +103,6 @@ public class Controller extends Parent {
         //Binding FXML (Label...) -> Property
         listView.itemsProperty().bind(listProperty);
 
-        cityName.textProperty().bind(cityNameProperty);
         time.textProperty().bind(timeProperty);
         temperature.textProperty().bind(temperatureProperty);
         weather.textProperty().bind(weatherProperty);
@@ -114,7 +111,6 @@ public class Controller extends Parent {
     }
 
     private void unbindAll(){
-        cityNameProperty.unbind();
         timeProperty.unbind();
         temperatureProperty.unbind();
         weatherProperty.unbind();
@@ -123,7 +119,6 @@ public class Controller extends Parent {
     }
 
     private void bindCity(City city){
-        cityNameProperty.bind(city.getOpenWeatherMap().namePropertyProperty());
         timeProperty.bind(city.getTimeZoneDB().timePropertyProperty());
         temperatureProperty.bind(city.getOpenWeatherMap().tempPropertyProperty());
         weatherProperty.bind(city.getOpenWeatherMap().weatherDescriptionPropertyProperty());
@@ -132,7 +127,6 @@ public class Controller extends Parent {
     }
 
     private void bindEmptyCityProperties(){
-        cityNameProperty.bind(new SimpleStringProperty());
         timeProperty.bind(new SimpleStringProperty());
         temperatureProperty.bind(new SimpleStringProperty());
         weatherProperty.bind(new SimpleStringProperty());

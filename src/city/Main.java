@@ -1,4 +1,4 @@
-package metier;
+package city;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -10,7 +10,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("../ressources/MeteoMain.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../window/MeteoMain.fxml"));
         primaryStage.setTitle("Weather Viewer");
         primaryStage.setScene(new Scene(root, 300, 275));
         primaryStage.show();
@@ -18,9 +18,6 @@ public class Main extends Application {
 
     public static void main(String[] args) {
            launch(args);
-
-
-//    City city = new City("agadir"); System.out.println(city.toString());
-
+        //City city = new City("agadir"); System.out.println(city.toString());
     }
 }

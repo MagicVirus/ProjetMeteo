@@ -1,4 +1,4 @@
-package api;
+package util;
 
 import java.io.*;
 import java.net.URL;
@@ -7,7 +7,7 @@ import java.nio.charset.Charset;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class JsonReader {
+public abstract class JsonReader {
 
     private static String readAll(Reader rd) throws IOException {
         StringBuilder sb = new StringBuilder();
@@ -25,8 +25,6 @@ public class JsonReader {
             String jsonText = readAll(rd);
             JSONObject json = new JSONObject(jsonText);
             return json;
-        } finally {
-            is.close();
-        }
+        } finally { is.close(); }
     }
 }
